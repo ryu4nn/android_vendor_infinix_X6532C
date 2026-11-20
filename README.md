@@ -39,6 +39,19 @@ Then the device tree inherits it with:
 $(call inherit-product, vendor/infinix/X6532C/X6532C-vendor.mk)
 ```
 
+## Local fix applied after extraction
+
+`extract_utils` unconditionally maps any `vendor/odm/` path onto the **ODM
+partition** (`$(TARGET_COPY_OUT_ODM)`), even though this device has no ODM
+partition — its `odm/` is a plain directory inside the `vendor` image. The 8
+affected entries were re-pointed at `$(TARGET_COPY_OUT_VENDOR)/odm/...` so the
+blobs land exactly where the stock vendor image keeps them. Re-apply if the
+blob list is ever regenerated:
+
+```sh
+sed -i 's|\$(TARGET_COPY_OUT_ODM)/odm/|$(TARGET_COPY_OUT_VENDOR)/odm/|g' X6532C-vendor.mk
+```
+
 ## Notes
 
 - Only **regular files** are included. The vendor partition also has 186
@@ -63,6 +76,18 @@ Repo ini menyediakan isi partisi `vendor` yang dipakai device tree
 - **1993** file, **464 MB**
 - Digenerate dengan `tools/extract-utils` LineageOS (Android.bp + product makefile)
 - Sisi vendor **Android 12 (SDK 31)**, VNDK **31**
+
+## Perbaikan lokal setelah ekstraksi
+
+`extract_utils` selalu memetakan path `vendor/odm/` ke **partisi ODM**
+(`$(TARGET_COPY_OUT_ODM)`), padahal device ini tidak punya partisi ODM — folder
+`odm/` ada di dalam image `vendor`. 8 entri yang terdampak dialihkan ke
+`$(TARGET_COPY_OUT_VENDOR)/odm/...` supaya blob duduk persis seperti di image
+vendor stock. Kalau daftar blob digenerate ulang, terapkan lagi:
+
+```sh
+sed -i 's|\$(TARGET_COPY_OUT_ODM)/odm/|$(TARGET_COPY_OUT_VENDOR)/odm/|g' X6532C-vendor.mk
+```
 
 ## Catatan
 

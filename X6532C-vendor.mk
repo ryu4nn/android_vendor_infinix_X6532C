@@ -1932,14 +1932,14 @@ PRODUCT_COPY_FILES += \
     vendor/infinix/X6532C/proprietary/vendor/lib64/libawinic_mtk_aurisys.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libawinic_mtk_aurisys.so \
     vendor/infinix/X6532C/proprietary/vendor/lib64/libmmc5603_kl4h.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libmmc5603_kl4h.so \
     vendor/infinix/X6532C/proprietary/vendor/media/license.lic:$(TARGET_COPY_OUT_VENDOR)/media/license.lic \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/NOTICE.xml.gz:$(TARGET_COPY_OUT_ODM)/odm/etc/NOTICE.xml.gz \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/build.prop:$(TARGET_COPY_OUT_ODM)/odm/etc/build.prop \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/group:$(TARGET_COPY_OUT_ODM)/odm/etc/group \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/passwd:$(TARGET_COPY_OUT_ODM)/odm/etc/passwd \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/vintf/manifest_dsds.xml:$(TARGET_COPY_OUT_ODM)/odm/etc/vintf/manifest_dsds.xml \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/vintf/manifest_qsqs.xml:$(TARGET_COPY_OUT_ODM)/odm/etc/vintf/manifest_qsqs.xml \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/vintf/manifest_ss.xml:$(TARGET_COPY_OUT_ODM)/odm/etc/vintf/manifest_ss.xml \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/vintf/manifest_tsts.xml:$(TARGET_COPY_OUT_ODM)/odm/etc/vintf/manifest_tsts.xml \
+    vendor/infinix/X6532C/proprietary/vendor/odm/etc/NOTICE.xml.gz:$(TARGET_COPY_OUT_VENDOR)/odm/etc/NOTICE.xml.gz \
+    vendor/infinix/X6532C/proprietary/vendor/odm/etc/build.prop:$(TARGET_COPY_OUT_VENDOR)/odm/etc/build.prop \
+    vendor/infinix/X6532C/proprietary/vendor/odm/etc/group:$(TARGET_COPY_OUT_VENDOR)/odm/etc/group \
+    vendor/infinix/X6532C/proprietary/vendor/odm/etc/passwd:$(TARGET_COPY_OUT_VENDOR)/odm/etc/passwd \
+    vendor/infinix/X6532C/proprietary/vendor/odm/etc/vintf/manifest_dsds.xml:$(TARGET_COPY_OUT_VENDOR)/odm/etc/vintf/manifest_dsds.xml \
+    vendor/infinix/X6532C/proprietary/vendor/odm/etc/vintf/manifest_qsqs.xml:$(TARGET_COPY_OUT_VENDOR)/odm/etc/vintf/manifest_qsqs.xml \
+    vendor/infinix/X6532C/proprietary/vendor/odm/etc/vintf/manifest_ss.xml:$(TARGET_COPY_OUT_VENDOR)/odm/etc/vintf/manifest_ss.xml \
+    vendor/infinix/X6532C/proprietary/vendor/odm/etc/vintf/manifest_tsts.xml:$(TARGET_COPY_OUT_VENDOR)/odm/etc/vintf/manifest_tsts.xml \
     vendor/infinix/X6532C/proprietary/vendor/odm_dlkm/etc/NOTICE.xml.gz:$(TARGET_COPY_OUT_VENDOR)/odm_dlkm/etc/NOTICE.xml.gz \
     vendor/infinix/X6532C/proprietary/vendor/odm_dlkm/etc/build.prop:$(TARGET_COPY_OUT_VENDOR)/odm_dlkm/etc/build.prop \
     vendor/infinix/X6532C/proprietary/vendor/res/images/lcd_test_00.png:$(TARGET_COPY_OUT_VENDOR)/res/images/lcd_test_00.png \
