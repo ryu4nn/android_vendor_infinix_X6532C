@@ -52,6 +52,20 @@ blob list is ever regenerated:
 sed -i 's|\$(TARGET_COPY_OUT_ODM)/odm/|$(TARGET_COPY_OUT_VENDOR)/odm/|g' X6532C-vendor.mk
 ```
 
+`extract_utils` juga meninggalkan `vendor/etc/vintf/compatibility_matrix.xml`
+dan `vendor/etc/vintf/manifest.xml` di `PRODUCT_COPY_FILES`, dan build/make
+menolaknya dengan *VINTF metadata found in PRODUCT_COPY_FILES*. Keduanya
+dijadikan modul `prebuilt_etc_xml` dengan `sub_dir: "vintf"`, dipasang apa
+adanya di path yang sama, lalu dimasukkan ke `PRODUCT_PACKAGES`. Kalau daftar
+blob digenerate ulang, keluarkan lagi dua entri itu dari `PRODUCT_COPY_FILES`.
+
+`extract_utils` also leaves `vendor/etc/vintf/compatibility_matrix.xml` and
+`vendor/etc/vintf/manifest.xml` in `PRODUCT_COPY_FILES`, which build/make
+rejects with *VINTF metadata found in PRODUCT_COPY_FILES*. Both are declared as
+`prebuilt_etc_xml` modules with `sub_dir: "vintf"` instead, installed verbatim
+at the same paths and listed in `PRODUCT_PACKAGES`. If the blob list is
+regenerated, move those two entries out of `PRODUCT_COPY_FILES` again.
+
 ## Notes
 
 - Only **regular files** are included. The vendor partition also has 186

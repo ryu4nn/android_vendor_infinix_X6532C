@@ -350,3 +350,24 @@ prebuilt_etc_xml {
 	soc_specific: true,
 }
 
+// VINTF metadata may not be installed through PRODUCT_COPY_FILES. These two are
+// not fragments (no "manifest/" sub directory): they are the full vendor
+// compatibility matrix and the full vendor manifest, installed verbatim at the
+// exact paths the stock vendor partition carries.
+prebuilt_etc_xml {
+	name: "vendor.infinix.X6532C.compatibility_matrix",
+	owner: "infinix",
+	src: "proprietary/vendor/etc/vintf/compatibility_matrix.xml",
+	filename: "compatibility_matrix.xml",
+	sub_dir: "vintf",
+	soc_specific: true,
+}
+
+prebuilt_etc_xml {
+	name: "vendor.infinix.X6532C.vintf_manifest",
+	owner: "infinix",
+	src: "proprietary/vendor/etc/vintf/manifest.xml",
+	filename: "manifest.xml",
+	sub_dir: "vintf",
+	soc_specific: true,
+}
