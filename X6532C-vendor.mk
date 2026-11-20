@@ -182,7 +182,6 @@ PRODUCT_COPY_FILES += \
     vendor/infinix/X6532C/proprietary/vendor/bin/wmt_launcher:$(TARGET_COPY_OUT_VENDOR)/bin/wmt_launcher \
     vendor/infinix/X6532C/proprietary/vendor/bin/wmt_loader:$(TARGET_COPY_OUT_VENDOR)/bin/wmt_loader \
     vendor/infinix/X6532C/proprietary/vendor/bin/wpa_cli:$(TARGET_COPY_OUT_VENDOR)/bin/wpa_cli \
-    vendor/infinix/X6532C/proprietary/vendor/build.prop:$(TARGET_COPY_OUT_VENDOR)/build.prop \
     vendor/infinix/X6532C/proprietary/vendor/data/camera/goldwatermark/configs/TranssionWM.json:$(TARGET_COPY_OUT_VENDOR)/data/camera/goldwatermark/configs/TranssionWM.json \
     vendor/infinix/X6532C/proprietary/vendor/data/camera/goldwatermark/resources/fonts/HurmeGeometricSans3_SemiBold.otf:$(TARGET_COPY_OUT_VENDOR)/data/camera/goldwatermark/resources/fonts/HurmeGeometricSans3_SemiBold.otf \
     vendor/infinix/X6532C/proprietary/vendor/data/camera/goldwatermark/resources/fonts/HurmeGeometricSans_No3_3_Light.otf:$(TARGET_COPY_OUT_VENDOR)/data/camera/goldwatermark/resources/fonts/HurmeGeometricSans_No3_3_Light.otf \
@@ -1931,15 +1930,9 @@ PRODUCT_COPY_FILES += \
     vendor/infinix/X6532C/proprietary/vendor/lib64/libmmc5603_kl4h.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libmmc5603_kl4h.so \
     vendor/infinix/X6532C/proprietary/vendor/media/license.lic:$(TARGET_COPY_OUT_VENDOR)/media/license.lic \
     vendor/infinix/X6532C/proprietary/vendor/odm/etc/NOTICE.xml.gz:$(TARGET_COPY_OUT_VENDOR)/odm/etc/NOTICE.xml.gz \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/build.prop:$(TARGET_COPY_OUT_VENDOR)/odm/etc/build.prop \
     vendor/infinix/X6532C/proprietary/vendor/odm/etc/group:$(TARGET_COPY_OUT_VENDOR)/odm/etc/group \
     vendor/infinix/X6532C/proprietary/vendor/odm/etc/passwd:$(TARGET_COPY_OUT_VENDOR)/odm/etc/passwd \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/vintf/manifest_dsds.xml:$(TARGET_COPY_OUT_VENDOR)/odm/etc/vintf/manifest_dsds.xml \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/vintf/manifest_qsqs.xml:$(TARGET_COPY_OUT_VENDOR)/odm/etc/vintf/manifest_qsqs.xml \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/vintf/manifest_ss.xml:$(TARGET_COPY_OUT_VENDOR)/odm/etc/vintf/manifest_ss.xml \
-    vendor/infinix/X6532C/proprietary/vendor/odm/etc/vintf/manifest_tsts.xml:$(TARGET_COPY_OUT_VENDOR)/odm/etc/vintf/manifest_tsts.xml \
     vendor/infinix/X6532C/proprietary/vendor/odm_dlkm/etc/NOTICE.xml.gz:$(TARGET_COPY_OUT_VENDOR)/odm_dlkm/etc/NOTICE.xml.gz \
-    vendor/infinix/X6532C/proprietary/vendor/odm_dlkm/etc/build.prop:$(TARGET_COPY_OUT_VENDOR)/odm_dlkm/etc/build.prop \
     vendor/infinix/X6532C/proprietary/vendor/res/images/lcd_test_00.png:$(TARGET_COPY_OUT_VENDOR)/res/images/lcd_test_00.png \
     vendor/infinix/X6532C/proprietary/vendor/res/images/lcd_test_01.png:$(TARGET_COPY_OUT_VENDOR)/res/images/lcd_test_01.png \
     vendor/infinix/X6532C/proprietary/vendor/res/images/lcd_test_02.png:$(TARGET_COPY_OUT_VENDOR)/res/images/lcd_test_02.png \
@@ -1949,9 +1942,12 @@ PRODUCT_COPY_FILES += \
     vendor/infinix/X6532C/proprietary/vendor/thh/ta/d91f322ad5a441d5955110eda3272fc0.ta:$(TARGET_COPY_OUT_VENDOR)/thh/ta/d91f322ad5a441d5955110eda3272fc0.ta \
     vendor/infinix/X6532C/proprietary/vendor/thh/ta/df1edda8627911e980ae507b9d9a7e7d.ta:$(TARGET_COPY_OUT_VENDOR)/thh/ta/df1edda8627911e980ae507b9d9a7e7d.ta \
     vendor/infinix/X6532C/proprietary/vendor/vendor_dlkm/etc/NOTICE.xml.gz:$(TARGET_COPY_OUT_VENDOR)/vendor_dlkm/etc/NOTICE.xml.gz \
-    vendor/infinix/X6532C/proprietary/vendor/vendor_dlkm/etc/build.prop:$(TARGET_COPY_OUT_VENDOR)/vendor_dlkm/etc/build.prop
 
 PRODUCT_PACKAGES += \
+    vendor.infinix.X6532C.odm_manifest_dsds \
+    vendor.infinix.X6532C.odm_manifest_qsqs \
+    vendor.infinix.X6532C.odm_manifest_ss \
+    vendor.infinix.X6532C.odm_manifest_tsts \
     vendor.infinix.X6532C.compatibility_matrix \
     vendor.infinix.X6532C.vintf_manifest \
     GoogleTetheringResOverlay \

@@ -371,3 +371,44 @@ prebuilt_etc_xml {
 	sub_dir: "vintf",
 	soc_specific: true,
 }
+
+// ODM SKU manifests. TARGET_COPY_OUT_ODM resolves to vendor/odm on this device
+// (no ODM partition), so build/make's ODM check catches these paths too. They
+// keep their stock names and location; vintf picks them up per
+// ro.boot.product.hardware.sku.
+
+prebuilt_etc_xml {
+	name: "vendor.infinix.X6532C.odm_manifest_dsds",
+	owner: "infinix",
+	src: "proprietary/vendor/odm/etc/vintf/manifest_dsds.xml",
+	filename_from_src: true,
+	sub_dir: "odm/etc/vintf",
+	soc_specific: true,
+}
+
+prebuilt_etc_xml {
+	name: "vendor.infinix.X6532C.odm_manifest_qsqs",
+	owner: "infinix",
+	src: "proprietary/vendor/odm/etc/vintf/manifest_qsqs.xml",
+	filename_from_src: true,
+	sub_dir: "odm/etc/vintf",
+	soc_specific: true,
+}
+
+prebuilt_etc_xml {
+	name: "vendor.infinix.X6532C.odm_manifest_ss",
+	owner: "infinix",
+	src: "proprietary/vendor/odm/etc/vintf/manifest_ss.xml",
+	filename_from_src: true,
+	sub_dir: "odm/etc/vintf",
+	soc_specific: true,
+}
+
+prebuilt_etc_xml {
+	name: "vendor.infinix.X6532C.odm_manifest_tsts",
+	owner: "infinix",
+	src: "proprietary/vendor/odm/etc/vintf/manifest_tsts.xml",
+	filename_from_src: true,
+	sub_dir: "odm/etc/vintf",
+	soc_specific: true,
+}

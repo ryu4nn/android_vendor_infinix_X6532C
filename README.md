@@ -52,19 +52,43 @@ blob list is ever regenerated:
 sed -i 's|\$(TARGET_COPY_OUT_ODM)/odm/|$(TARGET_COPY_OUT_VENDOR)/odm/|g' X6532C-vendor.mk
 ```
 
-`extract_utils` juga meninggalkan `vendor/etc/vintf/compatibility_matrix.xml`
-dan `vendor/etc/vintf/manifest.xml` di `PRODUCT_COPY_FILES`, dan build/make
-menolaknya dengan *VINTF metadata found in PRODUCT_COPY_FILES*. Keduanya
-dijadikan modul `prebuilt_etc_xml` dengan `sub_dir: "vintf"`, dipasang apa
-adanya di path yang sama, lalu dimasukkan ke `PRODUCT_PACKAGES`. Kalau daftar
-blob digenerate ulang, keluarkan lagi dua entri itu dari `PRODUCT_COPY_FILES`.
+`extract_utils` juga meninggalkan metadata VINTF di `PRODUCT_COPY_FILES`, dan
+build/make menolaknya dengan *VINTF metadata found in PRODUCT_COPY_FILES*:
+`compatibility_matrix.xml` dan `manifest.xml` milik vendor, ditambah empat
+manifest SKU ODM di `vendor/odm/etc/vintf/`. Keenamnya dijadikan modul
+`prebuilt_etc_xml`, dipasang apa adanya di path yang sama, lalu dimasukkan ke
+`PRODUCT_PACKAGES`. Yang ODM ikut tertangkap walaupun device ini tidak punya
+partisi ODM, karena `TARGET_COPY_OUT_ODM` mengembang jadi `vendor/odm`
+(`core/board_config.mk:711`). Kalau daftar blob digenerate ulang, keluarkan lagi
+keenam entri itu dari `PRODUCT_COPY_FILES`.
 
-`extract_utils` also leaves `vendor/etc/vintf/compatibility_matrix.xml` and
-`vendor/etc/vintf/manifest.xml` in `PRODUCT_COPY_FILES`, which build/make
-rejects with *VINTF metadata found in PRODUCT_COPY_FILES*. Both are declared as
-`prebuilt_etc_xml` modules with `sub_dir: "vintf"` instead, installed verbatim
-at the same paths and listed in `PRODUCT_PACKAGES`. If the blob list is
-regenerated, move those two entries out of `PRODUCT_COPY_FILES` again.
+Empat entri `build.prop` (`vendor/build.prop`, `vendor/odm/etc/build.prop`,
+`vendor/vendor_dlkm/etc/build.prop`, `vendor/odm_dlkm/etc/build.prop`) juga
+dikeluarkan dari `PRODUCT_COPY_FILES`: `build/make/core/sysprop.mk` men-generate
+file dengan path yang sama dari konfigurasi product, dan hasil generate
+menggantikan file hasil copy tanpa error apa pun. Dua yang isinya penting
+dipindah ke device tree sebagai `vendor.prop` dan `odm.prop` lalu dipasang lewat
+`TARGET_VENDOR_PROP` / `TARGET_ODM_PROP`; dua yang DLKM hanya berisi property
+identitas partisi dan digenerate ulang.
+
+`extract_utils` also leaves the VINTF metadata in `PRODUCT_COPY_FILES`, which
+build/make rejects with *VINTF metadata found in PRODUCT_COPY_FILES*: the vendor
+`compatibility_matrix.xml` and `manifest.xml`, plus the four ODM SKU manifests
+under `vendor/odm/etc/vintf/`. All six are declared as `prebuilt_etc_xml`
+modules instead, installed verbatim at the same paths and listed in
+`PRODUCT_PACKAGES`. Note that the ODM ones are caught even though this device
+has no ODM partition, because `TARGET_COPY_OUT_ODM` expands to `vendor/odm`
+(`core/board_config.mk:711`). If the blob list is regenerated, move those six
+entries out of `PRODUCT_COPY_FILES` again.
+
+The four `build.prop` entries (`vendor/build.prop`, `vendor/odm/etc/build.prop`,
+`vendor/vendor_dlkm/etc/build.prop`, `vendor/odm_dlkm/etc/build.prop`) are also
+gone from `PRODUCT_COPY_FILES`: `build/make/core/sysprop.mk` generates those
+exact files from the product configuration and the generated file replaces the
+copied one without any error. The two that carry real content are kept in the
+device tree as `vendor.prop` and `odm.prop` and installed through
+`TARGET_VENDOR_PROP` / `TARGET_ODM_PROP`; the two DLKM ones only hold
+partition identity properties and are regenerated.
 
 ## Notes
 
