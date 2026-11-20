@@ -1,0 +1,6 @@
+
+on property:sys.boot_completed=1 && property:persist.vendor.zram_bdev_add_once=0.5
+    swapon_all /vendor/etc/fstab.enableswap
+
+on property:sys.boot_completed=1 && property:persist.vendor.zram_bdev_add_once=1
+    swapon_all /vendor/etc/fstab.enableswap

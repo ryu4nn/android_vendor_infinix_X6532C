@@ -1,0 +1,16 @@
+{
+    "featureConfig": {
+        "tranfac.other.sdcard.external": "",
+        "tranfac.audio.speaker.num": "2",
+        "tranfac.audio.mic.num": "1",
+        "tranfac.sensor.gyroscope.virtual": "",
+        "tranfac.camera.dummy.front": "",
+        "tranfac.camera.dummy.yuv_index": "2",
+        "tranfac.camera.dummy.yuv2_index": "0",
+        "tranfac.camera.dummy.als_ic": "alspdt17",
+        "tranfac.camera.flashlight.front": "",
+        "tranfac.camera.cloud_otp": "",
+        "tranfac.connect.gps": "",
+        "tranfac.connect.fm": ""
+    }
+}
