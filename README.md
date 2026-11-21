@@ -81,19 +81,24 @@ identity properties and are regenerated.
 
 ### init scripts
 
-Three stock MTK/Transsion init scripts contain keywords that exist only in the
-vendor's patched `init`, so `host_init_verifier` rejects them mid-build:
+The stock vendor tree carries MTK/Transsion init scripts that only the vendor's
+patched `init` can parse. AOSP init rejects them at `host_init_verifier` time
+(89% through the build in run #21):
 
-- `init.mt6765.rc` and `meta_init.rc`: `tran_factory_reset`, a Transsion builtin
-  (factory/ATM mode only).
-- `meta_init.rc`: a line that starts with
+- `init.mt6765.rc` and `meta_init.rc`: `tran_factory_reset`, a Transsion builtin.
+- `meta_init.rc`: `//STD:add` comments in command position, and
+  `write ... $ro.serialno` with the pre-Android-12 property syntax.
+- `factory_init.rc`: `load_system_props`, removed from AOSP init, plus a
+  `powerctl` command that Android 12 handles in the property service instead.
+- `meta_init.rc`: a line starting with
   `/sys/module/musb_hdrc/parameters/musb_force_on`, missing its `write` keyword.
-- `factory_init.rc`: `powerctl ${sys.powerctl}`, a builtin that AOSP init no
-  longer has; Android 12 handles `sys.powerctl` in the property service.
 
-All four are device-only and factory-only, so they are commented out. AOSP init
-parses the files and the build runs the same verifier over every vendor script at
-the start of the build rather than at 89% of it.
+Four of these lines are commented out here, but patching every stock script is
+not practical. The vendor image is never flashed on this device, so the build
+skips `host_init_verifier` for copies coming from this repository and keeps the
+plain copy rule for them (`build/make/core/definitions.mk`,
+`copy-init-script-file-checked`, patched by the ROM workflow). System init
+scripts are still verified normally.
 
 ## Notes
 
