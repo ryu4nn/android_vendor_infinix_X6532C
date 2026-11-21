@@ -79,6 +79,22 @@ device tree as `vendor.prop` and `odm.prop` and installed through
 `TARGET_VENDOR_PROP` / `TARGET_ODM_PROP`; the two DLKM ones only hold partition
 identity properties and are regenerated.
 
+### init scripts
+
+Three stock MTK/Transsion init scripts contain keywords that exist only in the
+vendor's patched `init`, so `host_init_verifier` rejects them mid-build:
+
+- `init.mt6765.rc` and `meta_init.rc`: `tran_factory_reset`, a Transsion builtin
+  (factory/ATM mode only).
+- `meta_init.rc`: a line that starts with
+  `/sys/module/musb_hdrc/parameters/musb_force_on`, missing its `write` keyword.
+- `factory_init.rc`: `powerctl ${sys.powerctl}`, a builtin that AOSP init no
+  longer has; Android 12 handles `sys.powerctl` in the property service.
+
+All four are device-only and factory-only, so they are commented out. AOSP init
+parses the files and the build runs the same verifier over every vendor script at
+the start of the build rather than at 89% of it.
+
 ## Notes
 
 - Only **regular files** are included. The vendor partition also has 186

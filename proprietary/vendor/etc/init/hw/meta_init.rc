@@ -82,7 +82,10 @@ on early-init
     # initialize vendor.all.modules.ready to 1 here to prevent NOT GKI project blocked
     setprop vendor.all.modules.ready 1
 
- /sys/module/musb_hdrc/parameters/musb_force_on 1
+# The stock line here reads " /sys/module/musb_hdrc/parameters/musb_force_on 1",
+# with the "write" keyword missing, so AOSP init parses the path as a command
+# and rejects the file. Factory mode only; left disabled.
+# /sys/module/musb_hdrc/parameters/musb_force_on 1
 
 on init
     write /proc/bootprof "INIT:init"
@@ -477,6 +480,7 @@ on property:sys.usb.ffs.ready=1 && property:ro.boot.usbconfig=3 && property:sys.
 #BSP:add custom factory reset KHLHLHW-1 by lei.liu7 20220111 start
 #TRANSSION_START
 on property:persist.vendor.tran.wipedata=1
-    tran_factory_reset
+    # tran_factory_reset is a builtin added by Transsion's init; AOSP init has
+    # no such keyword and host_init_verifier rejects the whole file.
 #TRANSSION_END
 #BSP:add custom factory reset KHLHLHW-1 by lei.liu7 20220111 end

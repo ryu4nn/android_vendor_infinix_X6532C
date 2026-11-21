@@ -1202,7 +1202,9 @@ service osi /system/bin/osi
 
 #BSP:add custom factory reset KHLHLHW-1 by lei.liu7 20220106 start
 on property:persist.vendor.tran.wipedata=1 && property:ro.boot.atm=enable
-    tran_factory_reset
+    # tran_factory_reset is a builtin added by Transsion's init; AOSP init has
+    # no such keyword and host_init_verifier rejects the whole file.
+    # The action only fires in ATM/factory mode.
 #BSP:add custom factory reset KHLHLHW-1 by lei.liu7 20220106 end
 
 #SPD: add resmonitor and smartpanel bind small core by rui.fu 20230117 start

@@ -676,8 +676,10 @@ service console /system/bin/sh
     group shell log readproc
     seclabel u:r:shell:s0
 
-on property:sys.powerctl=*
-    powerctl ${sys.powerctl}
+# Android 12 handles sys.powerctl in the property service, and AOSP init no
+# longer has a "powerctl" builtin, so this factory-mode block is commented out.
+# on property:sys.powerctl=*
+#     powerctl ${sys.powerctl}
 
 on property:ro.debuggable=1
     # Give writes to anyone for the trace folder on debug builds.
